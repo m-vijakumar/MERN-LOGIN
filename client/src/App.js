@@ -3,17 +3,16 @@ import './App.css';
 
 function App() {
 
-  const [user ,setUser] = useState({data : "" });
+  const [user ,setUser] = useState({data : [] });
 
-const kk =() =>{
-  fetch("/.js",{
-  headers : { 
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  }
+const kk = async () =>{
+  const res = await fetch("/auth",{
+  
    })
-  .then(res => res.json() )
-  .then(u =>  setUser({data : u }))
+
+  const data= await res.json();
+  setUser({data : data })
+
 
 }
 
@@ -26,7 +25,12 @@ const kk =() =>{
 
    <h1>Users</h1>
    
-   {user.data.username}
+   {user.data.map(users =>
+
+    <li key= {users.username} >{users.username}</li>
+   )}
+
+  
     </div>
   );
 }

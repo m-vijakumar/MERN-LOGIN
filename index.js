@@ -9,7 +9,6 @@ const cookieparser =require('cookie-parser')
 const key =require("./setup/connect").sceret;
 const port =process.env.PORT || 5000;
 
-app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use("/",require("./routers/api/auth"));
 app.use(cors());

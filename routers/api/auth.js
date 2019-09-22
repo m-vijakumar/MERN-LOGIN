@@ -19,6 +19,13 @@ const NewUser= require("../../models/newuser");
 // @desc    starting router
 // @access  PUBLIC
 
+router.get('/auth',(req, res)=> {
+
+    return res.send([
+        {username: "vijaykumar"},
+        {username : "kumar"}
+        ]);
+});
 router.post("/auth/login",(req,res)=>{
     const username=req.body.name;
     const password =req.body.password;
