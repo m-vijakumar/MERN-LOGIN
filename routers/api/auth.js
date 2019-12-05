@@ -62,7 +62,7 @@ router.post("/auth/login",(req,res)=>{
 })
 
 router.post("/auth/register",(req,res)=>{
-    
+    console.log(req.body.username)
     NewUser.findOne({username:req.body.username})
         .then( new_user=>{
 
@@ -89,9 +89,13 @@ router.post("/auth/register",(req,res)=>{
                     { expiresIn: 3000 },
                      (err, token) => {
                     res.cookie("auth_t", token, { maxAge: 900000 });
-                    if(!err){ res.send(token)}
+                    if(!err){ 
+                        console.log("success:true")
+                      return  res.json({token:token ,success : 'true'})
+                    }
+                      
                    else{
-                       res.json({error:"error"});
+                    return  res.json({error:"error"});
                    }
                      
                   })
