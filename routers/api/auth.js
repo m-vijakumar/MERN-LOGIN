@@ -27,7 +27,7 @@ router.get('/auth',(req, res)=> {
         ]);
 });
 router.post("/auth/login",(req,res)=>{
-    const username=req.body.name;
+    const username=req.body.username;
     const password =req.body.password;
     
     NewUser.findOne({username})
@@ -47,7 +47,7 @@ router.post("/auth/login",(req,res)=>{
                 {expiresIn :9000000},
                 (err, token) => {
                     res.cookie("auth_t", token, { maxAge: 90000000 });
-                    res.send(token)  
+                   return res.json({'token ': token , 'success':true})  
                 })
         }else{
             res.json({message : "Invalied UserName or Password" })
@@ -91,7 +91,7 @@ router.post("/auth/register",(req,res)=>{
                     res.cookie("auth_t", token, { maxAge: 900000 });
                     if(!err){ 
                         console.log("success:true")
-                      return  res.json({token:token ,success : 'true'})
+                      return  res.json({token:token ,success : true})
                     }
                       
                    else{

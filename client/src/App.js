@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from './components/Header'
 import Login from './components/Login';
 import Home from './components/Home';
-import Register from "./components/Register"
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard"
 function App() {
 return(
 
@@ -23,6 +24,10 @@ return(
             <React.Fragment>
             <Register />
             </React.Fragment>)} />
+            <Route exact path="/dashboard" render={props=>(
+              <React.Fragment>
+              <Dashboard />
+              </React.Fragment>)} />
       </Router>
   </div>
 )
