@@ -1,11 +1,15 @@
 .App {
+  margin-top:10%;
   text-align: center;
+  color: rgb(166, 175, 182);
 }
 
 .App-logo {
   height: 40vmin;
 }
-
+td{
+  text-align: center;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

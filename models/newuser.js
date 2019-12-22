@@ -26,4 +26,4 @@ const newuserschema = new Schema({
     
 })
 
-module.exports = NewUser = mongoose.model("users",newuserschema);
+module.exports = NewUser = mongoose.model("reactlogin",newuserschema);

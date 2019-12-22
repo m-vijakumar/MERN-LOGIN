@@ -1,9 +1,8 @@
 import React from 'react'
-import {Link ,Redirect } from 'react-router-dom'
+import {Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom';
-import Dashboard from './Dashboard'
-export default  withRouter(function  Register(props) {
+// import { withRouter } from 'react-router-dom';
+export default function Register(props) {
 
 
   const [userData, setUserData] = useState({});
@@ -12,13 +11,13 @@ export default  withRouter(function  Register(props) {
   const [isSpinner,setSpinner] =useState(true);
   const [isSpinner1,setSpinner1] =useState(false);
 
-  useEffect(async () => {
+  useEffect( () => {
 
-      await fetch('/auth'
-
-      ).then(res =>{console.log(res)})
+      // await fetch('/auth')
+      // .then(res =>{console.log(res)})
+      // props.history.push("/dashboard");
       setSpinner(false)
-  }, []);
+  },[]);
 
 
   const handleChange = e => {
@@ -27,7 +26,7 @@ export default  withRouter(function  Register(props) {
   };
 
   const handleSubmit = async () => {
-
+    try{
     if(!userData.email || !userData.username ||! userData.password ){
 
       setErrMessage("fill the details")
@@ -48,28 +47,35 @@ export default  withRouter(function  Register(props) {
     mode:'cors',
     body :JSON.stringify(userdata)
   })
-  setSpinner1(false)
-  const data = await response.json();
-  console.log(data)
-  if (data.success === true) {
+  
+    const data = await response.json();
+    console.log(data)
    
-    console.log(data.success)
-    props.history.push("/dashboard");
-    //return <Redirect to="/Dashboard" />
-    
-  }else{ setErrMessage(data.message) }
-
-    }
+    if (data.success === true) {
+     
+      console.log(data.success)
+      props.history.push("/dashboard");
+      setSpinner1(false)
+      // return <Redirect to="/Dashboard" />
+      
+    }else{ setSpinner1(false) ;setErrMessage(data.message) }
+  
+      }
+  }catch(ee){
+    setSpinner1(false) ;setErrMessage("Internal Error")
+    console.log(ee)
+  } 
+ 
   }
-  const sp1 =  <button class="btn btn-success" type="button" disabled>
-  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+  const sp1 =  <button className="btn btn-success " type="button" disabled>
+  <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
   Loading...
 </button>
 
-const sp =  <input type="button" name="register"  value={isSpinner1 ? sp1 :"Register"} className="btn btn-success , App" onClick={handleSubmit} />
+const sp =  <input type="button" name="register"  value={isSpinner1 ? sp1 :"Register"} className="btn btn-success " onClick={handleSubmit} />
     if (isSpinner) {
       return (
-        <div className="spinner-border" role="status" id="spinner">
+        <div className="spinner-border " role="status" id="spinner">
         <span className="sr-only">Loading...</span>
         </div> 
       )
@@ -77,9 +83,10 @@ const sp =  <input type="button" name="register"  value={isSpinner1 ? sp1 :"Regi
     return (
          
         <div className="App">
-        <h3>Welcome</h3>
+        <h3>Register To Create Wonders</h3><br />
        
         <table className="login" onChange={handleChange}>
+        <tbody>
         <tr>
         <td><p>Email  : </p></td><td><input type="email" name="email" /></td>
         </tr>
@@ -89,10 +96,10 @@ const sp =  <input type="button" name="register"  value={isSpinner1 ? sp1 :"Regi
         <tr>
         <td><p>Password  : </p></td><td><input type="password" name="password" /></td>
         </tr>
-
-        <br />
-       
-        {isSpinner1 ? sp1 :sp }
+        <tr>
+        <td colSpan="2"><p >{isSpinner1 ? sp1 :sp }</p></td>
+        </tr>
+        </tbody> 
         </table>
        
         <br />
@@ -106,4 +113,4 @@ const sp =  <input type="button" name="register"  value={isSpinner1 ? sp1 :"Regi
     )
   
   }
-})
+}

@@ -9,7 +9,7 @@ const cookieparser =require('cookie-parser')
 const key =require("./setup/connect").sceret;
 const port =process.env.PORT || 5000;
 
-
+app.use("/dashboard",require("./routers/api/dashboard"))
 app.use("/",require("./routers/api/auth"));
 app.use(cors());
 app.use(bodyparser.urlencoded({extended:false}))

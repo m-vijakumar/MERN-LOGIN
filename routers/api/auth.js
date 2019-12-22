@@ -40,6 +40,7 @@ router.post("/auth/login",(req,res)=>{
         if(password == pass){
             const payload ={
                 username: user.username,
+                email:user.email
            };
 
             jsonwt.sign(payload,
@@ -119,12 +120,12 @@ router.post("/auth/register",(req,res)=>{
 router.get("/logout", (req, res) => {
     jsonwt.verify(req.cookies.auth_t, key, (err, user) => {
       if (user) {
-        res.clearCookie("auth_t").redirect("/")
+        res.clearCookie("auth_t").json({'success':true})
         
       } else {
         return res
         .status(404)
-        .render("home")
+        .json({'success':false})
       }
     });
   });

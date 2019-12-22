@@ -4,11 +4,11 @@ export default function Home() {
 
     const [isSpinner,setSpinner] =useState(true);
 
-    useEffect(async () => {
+    useEffect( () => {
 
-        await fetch('/auth'
+        // await fetch('/auth'
 
-        ).then(res =>{console.log(res)})
+        // ).then(res =>{console.log(res)})
         setSpinner(false)
     }, []);
 
