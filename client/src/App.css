@@ -44,3 +44,9 @@ td{
   position: absolute;
   background: transparent;
 }
+
+#video {
+  border: 1px solid rgb(112, 112, 112);
+  width: 98%;
+  max-width: 860px;
+}

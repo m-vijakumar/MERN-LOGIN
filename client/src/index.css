@@ -5,10 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://lh3.googleusercontent.com/dZ4wa6SW7o_EQhS-v5epHjEwz9VYn11z5sz90YUUckfU9IzSm3KZz7PVE4VdTzoWEirC5Y4aQz7KYKeaD9wzOtNiXmPrLZie2x-rdIDuQzfudPJ-7A");
+  /* background-image: url("https://lh3.googleusercontent.com/dZ4wa6SW7o_EQhS-v5epHjEwz9VYn11z5sz90YUUckfU9IzSm3KZz7PVE4VdTzoWEirC5Y4aQz7KYKeaD9wzOtNiXmPrLZie2x-rdIDuQzfudPJ-7A");
   background-repeat: no-repeat;
   background-size: cover;
-  text-decoration-color: wheat;
+  text-decoration-color: wheat; */
 }
 
 code {

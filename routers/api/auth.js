@@ -3,7 +3,7 @@ const router =express.Router();
 const bodyparser=require("body-parser");
 const cookie =require("cookie-parser");
 const cors =require('cors');
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 const jsonwt =require("jsonwebtoken");
 const key =require("../../setup/connect").sceret;
